@@ -74,52 +74,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
   <!--/ Nav Star /-->
  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top" style="background-color:#FAF9F6">
-    <div class="container">
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
-        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+  <div class="container">
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+      aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
 
-              <img src="{% static 'img/wlogo.png' %}" alt="" class="img-a img-fluid" style="height: 100px;">
+    <img src="{% static 'img/wlogo.png' %}" alt="" class="img-a img-fluid" style="height: 100px;">
 
-      <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
-        data-target="#navbarTogglerDemo01" aria-expanded="false">
-        <span class="fa fa-search" aria-hidden="true"></span>
-      </button>
-      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
-        <ul class="navbar-nav" style="color:#5C4033;">
-          <li class="nav-item" >
-            <a class="nav-link active" href="/home/" style="color:red">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/pgs/" style="color:red">Villas and Resorts</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/about/" style="color:red">About</a>
-          </li>
-            <li class="nav-item">
-            <a class="nav-link" href="/feedback/" style="color:red">Feedback</a>
-          </li>
-        </ul>
-      </div>
-
-      <div style="float: right; margin-right: 20px;">
-      <ul style="list-style-type:none;">
-
-          {% if user.is_authenticated %}
-        <li><a> Welcome {{user.username}}</a></li>
-        <li><a href="/bookmarks/">Bookmarks</a></li>
-        <li><a style="" href="/logout/">Logout</a></li>
-         {% endif %}
-
+    <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+      <ul class="navbar-nav" style="color:#5C4033;">
+        <li class="nav-item"><a class="nav-link active" href="/home/" style="color:red">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about/" style="color:red">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pgs/" style="color:red">Villas and Resorts</a></li>
+        <li class="nav-item"><a class="nav-link " href="/feedback/" style="color:red">Feedback</a></li>
+        <li class="nav-item"><a class="nav-link " href="/my_bookings/" style="color:red">My Bookings</a></li>
       </ul>
-      </div>
-
-
     </div>
-  </nav>
+
+    <div style="float: right; margin-right: 20px;">
+      <ul style="list-style-type:none;">
+        {% if user.is_authenticated %}
+          <li><a> Welcome {{user.username}}</a></li>
+          <li><a href="/bookmarks/">Bookmarks</a></li>
+          <li><a href="/logout/">Logout</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
   <!--/ Nav End /-->
 
   <!--/ Intro Single star /-->

@@ -3,10 +3,12 @@ from django.contrib.auth.models import User
 from django import forms
 from .models import *
 
-class stufrom(forms.ModelForm):
-    class Meta:
-        model=college
-        fields='__all__'
+from .models import Booking
+
+# class stufrom(forms.ModelForm):
+#     class Meta:
+#         model=college
+#         fields='__all__'
 
 class pgform(forms.ModelForm):
     class Meta:
@@ -29,3 +31,15 @@ class RegisterForm(UserCreationForm):
     class Meta:
         model=User
         fields = '__all__'
+
+
+
+
+class BookingForm(forms.ModelForm):
+    class Meta:
+        model = Booking
+        fields = ['check_in', 'check_out']
+        widgets = {
+            'check_in': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'check_out': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+        }

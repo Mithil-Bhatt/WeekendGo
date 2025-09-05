@@ -35,78 +35,113 @@
   <!--/ Form Search End /-->
 
   <!--/ Nav Star /-->
-  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top" style="background-color:#FAF9F6">
-    <div class="container">
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
-        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+<nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top" style="background-color:#FAF9F6">
+  <div class="container">
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+      aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
 
-              <img src="{% static 'img/wlogo.png' %}" alt="" class="img-a img-fluid" style="height: 100px;">
+    <img src="{% static 'img/wlogo.png' %}" alt="" class="img-a img-fluid" style="height: 100px;">
 
-      <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
-        data-target="#navbarTogglerDemo01" aria-expanded="false">
-        <span class="fa fa-search" aria-hidden="true"></span>
-      </button>
-      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
-        <ul class="navbar-nav" style="color:#5C4033;">
-          <li class="nav-item" >
-            <a class="nav-link active" href="/home/" style="color:red">Home</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="/about/" style="color:red">About</a>
-          </li>
-            <li class="nav-item">
-            <a class="nav-link" href="/feedback/" style="color:red">Feedback</a>
-          </li>
-        </ul>
-      </div>
-
-      <div style="float: right; margin-right: 20px;">
-      <ul style="list-style-type:none;">
-
-          {% if user.is_authenticated %}
-        <li><a> Welcome {{user.username}}</a></li>
-        <li><a href="/bookmarks/">Bookmarks</a></li>
-        <li><a style="" href="/logout/">Logout</a></li>
-         {% endif %}
-
+    <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+      <ul class="navbar-nav" style="color:#5C4033;">
+        <li class="nav-item"><a class="nav-link" href="/home/" style="color:red">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about/" style="color:red">About</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/pgs/" style="color:red">Villas and Resorts</a></li>
+        <li class="nav-item"><a class="nav-link " href="/feedback/" style="color:red">Feedback</a></li>
+        <li class="nav-item"><a class="nav-link " href="/my_bookings/" style="color:red">My Bookings</a></li>
       </ul>
-      </div>
-
-
     </div>
-  </nav>
+
+    <div style="float: right; margin-right: 20px;">
+      <ul style="list-style-type:none;">
+        {% if user.is_authenticated %}
+          <li><a> Welcome {{user.username}}</a></li>
+          <li><a href="/bookmarks/">Bookmarks</a></li>
+          <li><a href="/logout/">Logout</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
   <!--/ Nav End /-->
 
   <!--/ Intro Single star /-->
-  <section class="intro-single">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-lg-8">
-          <div class="title-single-box">
-            <h1 class="title-single" style="color:red;">Villas And Resorts Available</h1>
-            <!--<span class="color-text-a">Grid Properties</span>/-->
-          </div>
-        </div>
-        <div class="col-md-12 col-lg-4">
-          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+ <section class="intro-single">
+  <div class="container">
+    <div class="row">
 
-          </nav>
+      <!-- Left side title -->
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single" style="color:red;">Villas And Resorts Available</h1>
         </div>
       </div>
+
+      <!-- Right side search -->
+      <div class="col-md-12 col-lg-4 d-flex justify-content-lg-end align-items-center">
+        <form class="d-flex" method="get" action="">
+          <input type="text" class="form-control me-2 search-box" placeholder="Search" name="search">
+          <button type="submit" class="btn" style="background-color:red; color:white;">Search</button>
+        </form>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
+
   <!--/ Intro Single End /-->
+
+
+<!--/ Filter Section Start /-->
+<section class="filter-section py-4">
+  <div class="container">
+    <form method="get" action="{% url 'villa_list' %}" class="row g-3">
+
+      <div class="col-md-3">
+        <label class="form-label">Location</label>
+        <input type="text" name="location" class="form-control" placeholder="Enter location" value="{{ request.GET.location }}">
+      </div>
+
+      <div class="col-md-2">
+        <label class="form-label">Min Rent</label>
+        <input type="number" name="min_rent" class="form-control" placeholder="₹" value="{{ request.GET.min_rent }}">
+      </div>
+
+      <div class="col-md-2">
+        <label class="form-label">Max Rent</label>
+        <input type="number" name="max_rent" class="form-control" placeholder="₹" value="{{ request.GET.max_rent }}">
+      </div>
+
+      <div class="col-md-2">
+        <label class="form-label">Beds</label>
+        <input type="number" name="beds" class="form-control" value="{{ request.GET.beds }}">
+      </div>
+
+      <div class="col-md-2">
+        <label class="form-label">Baths</label>
+        <input type="number" name="baths" class="form-control" value="{{ request.GET.baths }}">
+      </div>
+
+      <div class="col-md-1 d-flex align-items-end">
+        <button type="submit" class="btn btn-danger w-100">Filter</button>
+      </div>
+
+    </form>
+  </div>
+</section>
+<!--/ Filter Section End /-->
+
+
+
 
   <!--/ Property Grid Star /-->
   <section class="property-grid grid">
     <div class="container">
 
       <div class="row">
+         {% if p %}
         {% for i in p %}
         <div class="col-md-4">
           <div class="card-box-a card-shadow">
@@ -154,6 +189,9 @@
         </div>
 
           {% endfor %}
+         {% else %}
+    <p class="text-danger">No villas found for the selected filters.</p>
+  {% endif %}
       </div>
     </div>
   </section>

@@ -2022,3 +2022,105 @@ footer .credits {
     font-size: 1.3rem;
   }
 }
+
+
+ /* Container */
+  #chatbot-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Floating Icon */
+  #chatbot-icon {
+    width: 55px;
+    height: 55px;
+    background: #ff4d4d;
+    border-radius: 50%;
+    color: white;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, background 0.3s;
+  }
+  #chatbot-icon:hover {
+    transform: scale(1.1);
+    background: #e60000;
+  }
+
+  /* Chat Window */
+  #chatbot-window {
+    width: 320px;
+    height: 420px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.3);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    animation: fadeIn 0.4s ease;
+  }
+
+  /* Header */
+  #chatbot-header {
+    background: #ff4d4d;
+    color: white;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+  }
+  #chatbot-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+  }
+
+  /* Body */
+  #chatbot-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    font-size: 14px;
+  }
+
+  /* Footer */
+  #chatbot-footer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+  }
+  #chatbot-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+  }
+  #chatbot-send {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    margin-left: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  #chatbot-send:hover {
+    background: #e60000;
+  }
+
+  /* Animation */
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
